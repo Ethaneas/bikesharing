@@ -4,6 +4,8 @@ library('tidyr') # data manipulation
 library('chron') # contains the is.weekend function
 library("lubridate") # contains functions related to dates
 
+
+# Data Preparation ----
 # read in dataset
 df1 <- fread("03Jul2019-09Jul2019.csv")
 df2 <- fread("10Jul2019-16Jul2019.csv")
@@ -25,7 +27,7 @@ str(df)
 names(df) <- c("rental.id", "duration", "bike.id"
                , "end.date", "end.station.id", "end.station.name"
                , "start.date", "start.station.id", "start.station.name")
-
+str(df)
 
 # converting to time
 df <- df[, .(start.date = strptime(start.date, "%d/%m/%Y %H:%M")
@@ -39,6 +41,25 @@ df <- df[, .(start.date = strptime(start.date, "%d/%m/%Y %H:%M")
        , end.station.name)]
 df[order(start.date)]
 
-# maintenance station
+# removing maintenance station
+start.station <- df[, .(station.id = unique(start.station.id))]
+df <- df[(end.station.id %in% start.station$station.id),]
+
+# removing weekends
+df <- (df[is.weekend(start.date) == F,])
+dim(df)
+
+
+# Community Detection ----
+# https://github.com/konstantinklemmer/bikecommclust/
+# Network analysis overview: https://www.youtube.com/watch?v=2_Q7uPAl34M
+
+
+
+
+
+
+
+
 
 
