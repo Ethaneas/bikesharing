@@ -13,7 +13,7 @@ library('stringr')
 # Dataset prep ------------------------------------------------------------
 # read in dataset
 rm(list=ls())
-setwd("C:/Users/Ethan Sim/Documents/bikesharing")
+setwd("C:/Users/ethansim/Documents/bikesharing")
 df1 <- fread("03Jul2019-09Jul2019.csv")
 df2 <- fread("10Jul2019-16Jul2019.csv")
 df3 <- fread("17Jul2019-23Jul2019.csv")
@@ -114,18 +114,19 @@ write.csv(membership,"communities.csv")
 ## dataset
 head(df)
 dim(df)
+
+setwd("C:/Users/ethansim/Documents/bikesharing/infomap-0.x")
+output <- paste0("/mnt/c/Users/ethansim/Documents/bikesharing/infomap-0.x")
 # get hours
-for(h in 0:23){
+#for(h in 0:23){
   df_h <- df[hour(start.date)== 1,]
   od.e <- as.data.frame(table(df_h[,start.station.id], df_h[,end.station.id]))
   names(od.e) <- c("origin","destination","weight")
   od.e <- od.e[od.e$weight > 0,]
   od.e.txt <- data.matrix(od.e)
   write.table(od.e.txt,paste0("edges",1,".txt"),row.names = FALSE,col.names = FALSE,sep = " ")
-  infomapcommand <- paste0("./Infomap ","edges",h,".txt"," outputH/ -N 20 --tree --map --directed")
+  infomapcommand <- paste0("bash && ./Infomap ","edges",1,".txt ",output," -N 20 --tree --map --directed")
   system(command = infomapcommand)
-}
-
-
+# }
 
 
