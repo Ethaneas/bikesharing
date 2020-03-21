@@ -1,0 +1,150 @@
+"","id","fast_greedy","walks","infomap","louvain"
+"1","0001 10th & Cambie",2,3,1,2
+"2","0004 Yaletown-Roundhouse Station",1,5,1,1
+"3","0005 Dunsmuir & Beatty",1,5,1,3
+"4","0007 12th & Yukon",2,1,1,2
+"5","0011 Ontario & Seawall",3,1,1,1
+"6","0012 Dunsmuir & Richards",1,5,1,3
+"7","0015 Granville & Georgia",1,5,1,3
+"8","0016 Pender & Burrard",1,5,1,3
+"9","0017 Marinaside & Davie",3,1,1,1
+"10","0024 Hornby & Pender",1,5,1,3
+"11","0025 Homer & Robson",1,5,1,3
+"12","0026 Beatty & Robson",1,5,1,3
+"13","0027 Beatty & Nelson",1,5,1,3
+"14","0030 Abbott & Cordova",3,5,1,1
+"15","0031 Morton & Denman",4,4,1,4
+"16","0036 Bute & Robson",1,5,1,3
+"17","0037 Hornby & Nelson",1,5,1,3
+"18","0039 Helmcken & Burrard",1,5,1,3
+"19","0040 Cardero & Davie",1,4,1,3
+"20","0044 Richards & Beach",1,5,1,3
+"21","0050 Bute & Comox",1,5,1,3
+"22","0053 Keefer & Abbott",3,1,1,1
+"23","0055 Keefer & Columbia",3,1,1,1
+"24","0057 Marinaside & Cooperage",3,1,1,1
+"25","0060 Bidwell & Burnaby",4,4,1,4
+"26","0063 Robson & Granville",1,5,1,3
+"27","0064 Expo & Smithe",1,5,1,3
+"28","0065 Cypress & Cornwall",3,1,1,1
+"29","0066 Anderson & 2nd",3,1,1,1
+"30","0068 Cypress & Broadway",2,3,1,2
+"31","0069 7th & Granville",2,1,1,1
+"32","0070 10th & Granville",2,3,1,2
+"33","0071 14th & Granville",2,1,1,2
+"34","0072 14th & Cambie",2,3,1,2
+"35","0073 Ontario & 5th",3,1,1,1
+"36","0076 Cypress & 4th",2,1,1,3
+"37","0077 Vanier Park",3,1,1,1
+"38","0078 Nelson & Mainland",1,5,1,3
+"39","0079 Nelson & Richards",1,5,1,3
+"40","0080 Laurel & Broadway",2,1,1,2
+"41","0082 Richards & Davie",1,5,1,3
+"42","0084 Sunset Beach West",4,4,1,4
+"43","0089 Burrard & Drake",1,5,1,3
+"44","0092 Chilco & Barclay",4,4,1,4
+"45","0106 Heather & 14th",2,3,1,2
+"46","0107 8th & Ontario",3,1,1,1
+"47","0108 Cypress & 1st",2,1,1,1
+"48","0109 7th & Arbutus",2,1,1,2
+"49","0110 5th & Arbutus",2,1,1,2
+"50","0112 10th & Oak",2,3,1,2
+"51","0113 Arbutus & 16th",2,1,1,2
+"52","0114 Cypress & 14th",2,3,1,2
+"53","0115 Cypress & 16th",2,1,1,1
+"54","0119 3rd & Quebec",2,1,1,2
+"55","0125 Hamilton & Robson",1,5,1,3
+"56","0129 Richards & Robson",1,5,1,3
+"57","0130 Heather & 16th",2,3,1,2
+"58","0132 14th & Ontario",2,3,1,2
+"59","0133 Ontario & 16th",2,3,1,2
+"60","0134 14th & Main",2,1,1,2
+"61","0137 Beach & Seymour",1,5,1,3
+"62","0140 Burrard & 7th",2,1,1,2
+"63","0147 Chestnut & McNicoll",3,1,1,1
+"64","0148 Quebec & Milross",3,1,1,1
+"65","0150 Alexander & Main",3,1,1,1
+"66","0152 Arbutus Greenway & 14th",2,3,1,2
+"67","0153 Arbutus Greenway & Fir",2,1,1,2
+"68","0154 Kitsilano Beach Park",3,1,1,1
+"69","0155 Arbutus & McNicoll",3,1,1,1
+"70","0159 Vine & 4th",2,1,1,2
+"71","0166 Alder & 11th",2,1,1,2
+"72","0167 Cordova & Columbia",3,1,1,1
+"73","0172 10th & Columbia",2,3,1,2
+"74","0173 Columbia & 2nd",3,1,1,1
+"75","0174 1st & Ontario",3,1,1,1
+"76","0176 10th & Ontario",2,3,1,2
+"77","0187 Bute & Davie",1,5,1,3
+"78","0197 1st & Main",3,1,1,1
+"79","0198 6th & Main",3,1,1,2
+"80","0203 Pine & 14th",2,3,1,2
+"81","0204 York & Yew",3,1,1,1
+"82","0205 Pine & 10th",2,1,1,2
+"83","0206 8th & Scotia",3,1,1,3
+"84","0208 Arbutus Greenway & Broadway",2,1,1,2
+"85","0211 14th & Alder",2,3,1,2
+"86","0212 Union & Gore",3,1,1,1
+"87","0218 Carrall & Seawall",3,1,1,1
+"88","0239 Grant & Commercial",2,2,1,2
+"89","0242 8th & Commercial",2,2,1,2
+"90","0244 10th & Commercial",2,3,1,2
+"91","0245 Woodland & 10th",2,1,1,2
+"92","0246 Glen & Broadway",2,3,1,2
+"93","0248 St George & Broadway",2,3,1,2
+"94","0260 10th & Fraser",2,3,1,2
+"95","0996 Balancer Bike Check In",1,1,1,3
+"96","0002 Burrard Station",1,5,1,3
+"97","0008 8th & Ash",3,1,1,1
+"98","0014 Canada Place",4,4,1,4
+"99","0019 Robson & Hornby",1,5,1,3
+"100","0028 Davie & Beach",4,4,1,4
+"101","0032 Comox & Denman",1,4,1,3
+"102","0033 Robson & Denman",4,4,1,4
+"103","0035 Coal Harbour Community Centre",4,6,1,4
+"104","0041 Cardero & Robson",4,4,1,3
+"105","0047 Chilco & Beach",4,4,1,4
+"106","0048 Comox & Broughton",1,5,1,3
+"107","0052 Cambie & Water",4,5,1,4
+"108","0058 Homer & Smithe",3,5,1,3
+"109","0081 7th & Heather",2,1,1,1
+"110","0083 Aquatic Centre",4,4,1,4
+"111","0087 Broughton & Burnaby",1,5,1,3
+"112","0088 Harwood & Bute",1,5,1,3
+"113","0093 Chilco & Robson",4,4,1,4
+"114","0096 Nicola & Robson",1,4,1,3
+"115","0099 Vancouver Art Gallery - North Plaza",1,5,1,3
+"116","0101 Stanley Park - Vancouver Aquarium",4,6,1,4
+"117","0102 Stanley Park - Second Beach North",4,6,1,4
+"118","0123 Georgia & Thurlow",1,5,1,3
+"119","0136 David Lam Park - West",3,4,1,4
+"120","0138 Richards & Helmcken",1,5,1,3
+"121","0139 Burrard & 4th",2,1,1,2
+"122","0171 5th & Yukon",3,1,1,2
+"123","0196 Drake & Hornby",1,5,1,3
+"124","0201 Shaw Tower",4,4,1,3
+"125","0209 Stanley Park - Information Booth",4,6,1,4
+"126","0237 Glen & 6th",3,1,1,1
+"127","0240 2nd & Commercial",2,2,1,2
+"128","0254 Grandview Bike Lane & Commercial",3,1,1,2
+"129","0601 Olympic Village Station",3,1,1,1
+"130","0602 Olympic Village Station - Parking Lot",3,1,1,1
+"131","0009 Spyglass & Seawall",3,1,1,1
+"132","0010 Stamp's Landing",3,1,1,1
+"133","0054 Expo & Carrall",3,1,1,1
+"134","0104 Stanley Park - Second Beach South",4,6,1,4
+"135","0105 Stanley Park - Totem Poles",4,6,1,4
+"136","0108 1st & Chestnut",3,1,1,1
+"137","0165 Columbia & 4th",2,1,1,2
+"138","0222 Adanac & McLean",3,1,1,1
+"139","0997 WareHouse Workshop",1,7,1,3
+"140","0236 Keith & 6th",3,3,1,2
+"141","0143 South False Creek Seawall",3,1,1,1
+"142","0223 Commercial & Adanac",3,1,1,1
+"143","0235 Charles & Commercial",3,1,1,1
+"144","0241 4th & Commercial",2,1,1,2
+"145","0231 Napier & Commercial",2,2,1,2
+"146","0265 St Catherines & 10th",3,2,1,2
+"147","1000 Temporary Station - Marketing Events",1,8,2,3
+"148","0221 Union & Glen",1,9,1,3
+"149","0994 station for tests",1,10,2,3
