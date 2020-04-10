@@ -20,9 +20,16 @@ df_spring <- fread("df_spring.csv", header = T)
 setDT(df_spring)
 df_summer <- fread("df_summer.csv", header = T)
 setDT(df_summer)
+df_summer <- df_summer[,c(-1)]
+df_summer <- df_summer[, .(start.date = as.POSIXct(start.date, format = "%Y-%m-%d %H:%M")
+                           , end.date = as.POSIXct(end.date, format = "%Y-%m-%d %H:%M")
+                           , start.station.name
+                           , end.station.name
+                           , formula
+                           , distance_m
+                           , duration_s)]
 df_winter <- fread("df_winter.csv", header = T)
 setDT(df_winter)
-
 
 spring <- lapply(1:4, FUN = function(x){
   df <- paste0('df',x) 
@@ -167,15 +174,100 @@ p3
 ggarrange(p2, p3, ncol = 2, nrow = 1)
 
 
+# Graph statistics --------------------------------------------------
+df <- df_summer
+
+# graph object
+od.e <- as.data.frame(table(df[end.station.name != "",start.station.name],df[end.station.name != "",end.station.name]))
+names(od.e) <- c('origin', 'destination', 'weight')
+od.e <- od.e[od.e$weight >= 1,]
+g <- graph_from_data_frame(od.e[,1:2], directed = T)
+E(g)$weight <- od.e$weight
+g <- simplify(g)
+# coords <- layout_with_lgl(g, maxiter = 10000, area=35*vcount(g)^2)
+# plot(g, vertex.size=10, vertex.label = NA, edge.arrow.size=0.1)
+
+# degree distribution
+deg <- igraph::degree(g)
+deg.in <- data.frame(igraph::degree(g, mode = "in"))
+names(deg.in) <- "deg"
+setDT(deg.in)
+stat <- deg.in[,.(mean = mean(deg), sd = sd(deg), median = median(deg))]
+
+deg.out <- data.frame(igraph::degree(g, mode = "out"))
+names(deg.out) <- "deg"
+setDT(deg.out)
+stat2 <- deg.out[,.(mean = mean(deg), sd = sd(deg), median = median(deg))]
+
+temp <- rbind(deg.in[,.(deg, var = "In-Degree")], deg.out[,.(deg, var = "Out-Degree")])
+
+p1 <- ggplot(data = temp) + 
+  aes(x = deg) +
+  geom_boxplot() +
+  facet_grid(. ~ var) +
+  coord_flip() +
+  xlab("Degree") +
+  theme_bw()
+p1
+
+p2 <- ggplot(data = temp) + 
+  aes(x = deg) +
+  geom_histogram() +
+  facet_grid(. ~ var) +
+  xlab("Degree") +
+  ylab("Frequency") +
+  theme_bw()
+p2
+
+# density
+edge_connectivity(g)
+edge_density(g)
+
+# transitivity
+transitivity <- transitivity(g)
+
+# closeness
+closeness <- igraph::closeness(g)
+closeness <- closeness[order(closeness,decreasing =T)]
+write.csv(closeness, "closeness.csv")
+
+# betweenness
+betweenness <- igraph::betweenness(g)
+betweenness <- betweenness[order(betweenness,decreasing =T)]
+write.csv(betweenness, "betweenness.csv")
+
+## erdos renyi
+# n <- gorder(g)
+# ed <- edge_density(g)
+# g2 <- erdos.renyi.game(n, ed,"gnp", directed = TRUE)
+# 
+# n <- vcount(g2)
+# e <- ecount(g2)
+# 
+# expected.density <- ecount(g2)/(n*(n-1))
+# expected.density
+# 
+# actual.density <- ecount(g)/(n*(n-1))
+# actual.density
+# 
+# 
+# graph_vec <- rep(NA, 1000)
+# # Generate 1000 random graphs and find the edge connectivity
+# for(i in 1:1000) {
+#   w1 <- erdos.renyi.game(nv, ed,"gnp", directed = TRUE)
+#   graph_vec[i] <- edge_connectivity(w1)
+# }
+
+
 # Community detection -----------------------------------------------------
 ### read
 summer.membership <- fread("summer_membership.csv")
 setDT(summer.membership)
+summer.membership <- summer.membership[,c(-1)]
 winter.membership <- fread("winter_membership.csv")
 setDT(winter.membership)
 spring.membership <- fread("spring_membership.csv")
 setDT(spring.membership)
-
 
 ## overall
 overall_membership <- function(df){
@@ -185,10 +277,10 @@ overall_membership <- function(df){
   # removing nodes with less than one edge a day on average
   # edge dataset
   od.e <- od.e[od.e$weight >= 1,]
-  od.e.txt <- data.matrix(od.e)
+  od.e.txt <- data.matrix(od.e) # infomap use
   # graph objects
   g <- graph_from_data_frame(od.e, directed = F)
-  gd <- graph_from_data_frame(od.e, directed = T)
+  gd <- graph_from_data_frame(od.e, directed = T) # infomap to find limiting dist
   g <- simplify(g)
   # reproducible results
   set.seed(123)
@@ -197,7 +289,7 @@ overall_membership <- function(df){
   fc <- cluster_fast_greedy(g, merges = TRUE, modularity = TRUE,
                             membership = TRUE, weights = E(g)$weight)
   
-  # fc2 <- edge.betweenness.community(g) too much memory
+  # fc2 <- edge.betweenness.community(g) taking too much memory
   fc3 <- cluster_walktrap(g, weights = E(g)$weight, steps = 4,
                           merges = TRUE, modularity = TRUE, membership = TRUE)
   fc4 <- cluster_infomap(gd, e.weights = NULL, v.weights = E(gd)$weight, nb.trials = 20,
@@ -335,6 +427,7 @@ spring.membership.hourly <- lapply(0:23, df = df_winter, FUN = function(h, df){
   membership <- membership[,c(5,1,2,3,4)]
   return(membership)
 })
+
 
 # Visualization -----------------------------------------------------------
 setwd("C:/Users/ethansim/Documents/bikesharing/vancouver")
